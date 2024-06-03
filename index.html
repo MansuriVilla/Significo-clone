@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/splitting/dist/splitting.css" />
+    <link rel="stylesheet" href="https://unpkg.com/splitting/dist/splitting-cells.css" />
+
+
+</head>
+<style>
+    body {
+        background-color: black;
+        color: #fff;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    p {
+        margin: 0px;
+        padding: 0px;
+    }
+
+
+    .hero {
+        height: 480vh;
+    }
+
+    .hero .hero-inner {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+    }
+
+    .hero .hero-inner .hero-sticky {
+        min-height: 100vh;
+    }
+
+    #main .hero .hero-img {
+        height: 100vh;
+    }
+
+    .hero-main-img {
+
+        --clip: 100%;
+        clip-path: circle(var(--clip));
+        width: 100%;
+        position: absolute;
+        z-index: 999;
+    }
+
+    #main .hero .hero-inner .hero-sticky .main-text {
+        height: 100%;
+        scale: 20;
+        width: 100vw;
+        visibility: hidden;
+        position: absolute;
+    }
+
+    #main .hero .hero-inner .hero-sticky .main-text .top-main-text {
+        max-width: 300px;
+        width: 100%;
+        margin: 50px auto 0px;
+        text-align: center;
+        font-size: 1.6rem;
+
+        /* opacity: 0; */
+    }
+
+    #main .hero .hero-inner .hero-sticky .main-text .top-main-text .text-splitting {
+        opacity: 0;
+    }
+
+    #main .hero .hero-inner .hero-sticky .main-text .main-text-inner {
+        height: 100%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+
+    #main .main-text .texts {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #main .main-text .text {
+        display: flex;
+        gap: 50px;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+        margin: 0px 20px;
+    }
+
+    #main .main-text .text p {
+        width: max-content;
+        margin: 0;
+    }
+
+    #main .main-text .text span img {
+        height: 30px;
+        width: 30px;
+        border-radius: 50px;
+    }
+
+
+    #main .hero .main-text .text-rows {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 9999;
+    }
+
+    #main section {
+        background-color: #101010;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        align-items: center;
+    }
+
+    #main section .craft {
+        display: flex;
+        width: 100%;
+        padding: 200px 8%;
+        justify-content: space-between;
+    }
+
+    #main section .craft .craft-left {
+        display: flex;
+
+    }
+
+    #main section .craft .craft-left h2 {
+        max-width: 420px;
+        font-size: 36px;
+        align-self: flex-start;
+        position: sticky;
+        position: -webkit-sticky;
+        top: 10rem;
+
+    }
+
+    #main section .craft .craft-right {
+        margin-right: 150px;
+        padding: 290px 0px;
+    }
+
+    #main section .craft .craft-right .right-inner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 30px;
+        max-width: 100%;
+        width: 500px;
+    }
+
+    #main section .craft .craft-right .right-inner .right-box {
+        border: 1px solid #fff;
+        padding: 20px;
+        text-align: center;
+        max-width: 420px;
+        width: 100%;
+    }
+
+    #main section .craft .craft-right .right-inner .right-box h3 {
+        font-size: 32px;
+    }
+
+    #main section .craft .craft-right .right-inner .right-box p {
+        font-size: 20px;
+    }
+
+
+
+    #main #talk .horizontal .talk-main {
+        position: sticky;
+        top: 0;
+        height: 100%;
+        height: 100vh;
+        height: 100dvh;
+        background-color: #202020;
+    }
+
+    #main #talk .horizontal .talk-main .talk-text .container {
+        width: 400%;
+        height: 100vh;
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-y: scroll;
+    }
+
+    #main #talk .horizontal .talk-main .talk-text .container .panel {
+        height: 100vh;
+        width: 400%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 5rem;
+    }
+
+    #main #our-team {
+        padding: 8% 0px;
+    }
+
+    #main #our-team .team-inner {
+        width: 100%;
+        padding: 0px 8%;
+    }
+
+    #main #our-team .team-inner .our-team-title h2 {
+        font-size: 3rem;
+        text-align: center;
+        margin-bottom: 150px;
+    }
+
+    #main #our-team .team-inner .team-row {
+        display: flex;
+        justify-content: space-between;
+        height: 100px;
+        background-color: #000;
+        align-items: center;
+        padding: 0px 30px;
+        border-bottom: 2px solid #fff;
+        font-size: 44px;
+        position: relative;
+        /* z-index: 999; */
+        /* overflow: hidden; */
+    }
+
+    #main #our-team .team-inner .team-row p {
+        position: relative;
+        z-index: 999;
+    }
+
+    #main #our-team .team-inner .team-row::after {
+        content: "";
+        height: 100%;
+        width: 100%;
+        background-color: #4f4f4f;
+        display: block;
+        position: absolute;
+        left: 0;
+        transform: scaleY(0);
+        transition: .2s ease all;
+        z-index: 0;
+        animation-fill-mode: forwards;
+        transform-origin: top center;
+    }
+
+    #main #our-team .team-inner .team-row:hover::after {
+        content: "";
+        height: 100%;
+        width: 100%;
+
+        display: block;
+        position: absolute;
+        left: 0;
+        z-index: 0;
+        transform: scaleY(1);
+        transform-origin: top center;
+    }
+
+    #main #our-team .team-inner .team-row .team-row-left {
+        display: flex;
+        gap: 20px;
+    }
+
+    #main #our-team .team-inner .team-row .team-row-left .num {
+        /* opacity: .15; */
+    }
+
+    #main #our-team .team-inner .team-row .team-img {
+        z-index: 999;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        visibility: none;
+        opacity: 0;
+        transition: .2s ease all;
+    }
+
+    #main #our-team .team-inner .team-row .team-img img {
+        filter: brightness(100%);
+        height: 100px;
+        border-radius: 500px;
+        scale: 0;
+        transition: .2s ease all;
+        width: 100px;
+    }
+
+    #main #our-team .team-inner .team-row:hover .team-img {
+        visibility: visible;
+
+        opacity: 1;
+    }
+
+    #main #our-team .team-inner .team-row:hover .team-img img {
+        scale: 2;
+    }
+
+    .pre-loader {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        --clip: 100%;
+        clip-path: circle(var(--clip));
+        overflow: hidden;
+        transform: translate(-50%, -50%);
+        height: 100vh;
+        width: 100%;
+        scale: 1;
+        z-index: 999999;
+        background-color: antiquewhite;
+    }
+
+    .pre-loader .pre-loader-text {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #container {
+        margin: 0%;
+    }
+
+    #circle {
+        position: relative;
+        width: 100%;
+        /* padding-bottom: 100%; */
+        overflow: hidden;
+    }
+
+    #circle text {
+        font-family: 'Helvetica Neue', Arial;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    #circle svg {
+        /* position: absolute; */
+        left: 0;
+        top: 0;
+        width: 100%;
+        /* height: 540px; */
+
+        -webkit-animation-name: rotate;
+        -moz-animation-name: rotate;
+        -ms-animation-name: rotate;
+        -o-animation-name: rotate;
+        animation-name: rotate;
+        -webkit-animation-duration: 5s;
+        -moz-animation-duration: 5s;
+        -ms-animation-duration: 5s;
+        -o-animation-duration: 5s;
+        animation-duration: 5s;
+        -webkit-animation-iteration-count: infinite;
+        -moz-animation-iteration-count: infinite;
+        -ms-animation-iteration-count: infinite;
+        -o-animation-iteration-count: infinite;
+        animation-iteration-count: infinite;
+        -webkit-animation-timing-function: linear;
+        -moz-animation-timing-function: linear;
+        -ms-animation-timing-function: linear;
+        -o-animation-timing-function: linear;
+        animation-timing-function: linear;
+
+    }
+
+    @-webkit-keyframes rotate {
+        from {
+            -webkit-transform: rotate(360deg);
+        }
+
+        to {
+            -webkit-transform: rotate(0);
+        }
+    }
+
+    @-moz-keyframes rotate {
+        from {
+            -moz-transform: rotate(360deg);
+        }
+
+        to {
+            -moz-transform: rotate(0);
+        }
+    }
+
+    @-ms-keyframes rotate {
+        from {
+            -ms-transform: rotate(360deg);
+        }
+
+        to {
+            -ms-transform: rotate(0);
+        }
+    }
+
+    @-o-keyframes rotate {
+        from {
+            -o-transform: rotate(360deg);
+        }
+
+        to {
+            -o-transform: rotate(0);
+        }
+    }
+
+    @keyframes rotate {
+        from {
+            transform: rotate(360deg);
+        }
+
+        to {
+            transform: rotate(0);
+        }
+    }
+</style>
+
+
+<body>
+    <div class="pre-loader">
+        <div class="pre-loader-text">
+            <div id="container">
+                <div id="circle">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                        x="0px" y="0px" width="300px" height="300px" viewBox="0 0 300 300"
+                        enable-background="new 0 0 300 300" xml:space="preserve">
+                        <defs>
+                            <path id="circlePath" d="M 150, 150 m -60, 0 a 60,60 0 0,1 120,0 a 60,60 0 0,1 -120,0 " />
+                        </defs>
+                        <circle cx="150" cy="100" r="75" fill="none" />
+                        <g>
+                            <use xlink:href="#circlePath" fill="none" />
+                            <text fill="#000">
+                                <textPath xlink:href="#circlePath">Text rotating around a circle path with SVG!
+                                </textPath>
+                            </text>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="main">
+        <div class="hero">
+            <div class="hero-inner">
+                <div class="hero-sticky">
+                    <div class="hero-main-img">
+
+                        <div class="hero-img">
+                            <img src="https://images.unsplash.com/photo-1525874684015-58379d421a52?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                alt="">
+                        </div>
+                    </div>
+                    <div class="main-text">
+                        <div class="top-main-text">
+                            <p class="text-splitting">
+                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur tenetur aliquam
+                            </p>
+                        </div>
+                        <div class="main-text-inner">
+                            <div class="text-rows">
+
+                                <div class="texts left">
+                                    <div class="text">
+                                        <p>Lorem ipsum dolor</p>
+                                        <span>
+                                            <img src="https://images.unsplash.com/photo-1716049159350-54b36ce90d25?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDIxfEZ6bzN6dU9ITjZ3fHxlbnwwfHx8fHw%3D"
+                                                alt="">
+                                        </span>
+                                    </div>
+                                    <div class="text">
+                                        <p>Lorem ipsum dolor</p>
+                                        <span>
+                                            <img src="https://images.unsplash.com/photo-1716049159350-54b36ce90d25?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDIxfEZ6bzN6dU9ITjZ3fHxlbnwwfHx8fHw%3D"
+                                                alt="">
+                                        </span>
+                                    </div>
+                                    <div class="text">
+                                        <p>Lorem ipsum dolor</p>
+                                        <span>
+                                            <img src="https://images.unsplash.com/photo-1716049159350-54b36ce90d25?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDIxfEZ6bzN6dU9ITjZ3fHxlbnwwfHx8fHw%3D"
+                                                alt="">
+                                        </span>
+                                    </div>
+                                    <div class="text">
+                                        <p>Lorem ipsum dolor</p>
+                                        <span>
+                                            <img src="https://images.unsplash.com/photo-1716049159350-54b36ce90d25?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDIxfEZ6bzN6dU9ITjZ3fHxlbnwwfHx8fHw%3D"
+                                                alt="">
+                                        </span>
+                                    </div>
+                                    <div class="text">
+                                        <p>Lorem ipsum dolor</p>
+                                        <span>
+                                            <img src="https://images.unsplash.com/photo-1716049159350-54b36ce90d25?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDIxfEZ6bzN6dU9ITjZ3fHxlbnwwfHx8fHw%3D"
+                                                alt="">
+                                        </span>
+                                    </div>
+                                    <div class="text">
+                                        <p>Lorem ipsum dolor</p>
+                                        <span>
+                                            <img src="https://images.unsplash.com/photo-1716049159350-54b36ce90d25?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDIxfEZ6bzN6dU9ITjZ3fHxlbnwwfHx8fHw%3D"
+                                                alt="">
+                                        </span>
+                                    </div>
+                                    <div class="text">
+                                        <p>Lorem ipsum dolor</p>
+                                        <span>
+                                            <img src="https://images.unsplash.com/photo-1716049159350-54b36ce90d25?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDIxfEZ6bzN6dU9ITjZ3fHxlbnwwfHx8fHw%3D"
+                                                alt="">
+                                        </span>
+                                    </div>
+                                    <div class="text">
+                                        <p>Lorem ipsum dolor</p>
+                                        <span>
+                                            <img src="https://images.unsplash.com/photo-1716049159350-54b36ce90d25?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDIxfEZ6bzN6dU9ITjZ3fHxlbnwwfHx8fHw%3D"
+                                                alt="">
+                                        </span>
+                                    </div>
+                                    <div class="text">
+                                        <p>Lorem ipsum dolor</p>
+                                        <span>
+                                            <img src="https://images.unsplash.com/photo-1716049159350-54b36ce90d25?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDIxfEZ6bzN6dU9ITjZ3fHxlbnwwfHx8fHw%3D"
+                                                alt="">
+                                        </span>
+                                    </div>
+                                    <div class="text">
+                                        <p>Lorem ipsum dolor</p>
+                                        <span>
+                                            <img src="https://images.unsplash.com/photo-1716049159350-54b36ce90d25?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDIxfEZ6bzN6dU9ITjZ3fHxlbnwwfHx8fHw%3D"
+                                                alt="">
+                                        </span>
+                                    </div>
+                                    <div class="text">
+                                        <p>Lorem ipsum dolor</p>
+                                        <span>
+                                            <img src="https://images.unsplash.com/photo-1716049159350-54b36ce90d25?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDIxfEZ6bzN6dU9ITjZ3fHxlbnwwfHx8fHw%3D"
+                                                alt="">
+                                        </span>
+                                    </div>
+                                    <div class="text">
+                                        <p>Lorem ipsum dolor</p>
+                                        <span>
+                                            <img src="https://images.unsplash.com/photo-1716049159350-54b36ce90d25?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDIxfEZ6bzN6dU9ITjZ3fHxlbnwwfHx8fHw%3D"
+                                                alt="">
+                                        </span>
+                                    </div>
+                                    <div class="text">
+                                        <p>Lorem ipsum dolor</p>
+                                        <span>
+                                            <img src="https://images.unsplash.com/photo-1716049159350-54b36ce90d25?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDIxfEZ6bzN6dU9ITjZ3fHxlbnwwfHx8fHw%3D"
+                                                alt="">
+                                        </span>
+                                    </div>
+                                    <div class="text">
+                                        <p>Lorem ipsum dolor</p>
+                                        <span>
+                                            <img src="https://images.unsplash.com/photo-1716049159350-54b36ce90d25?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDIxfEZ6bzN6dU9ITjZ3fHxlbnwwfHx8fHw%3D"
+                                                alt="">
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="texts right">
+                                    <div class="text">
+                                        <span>
+                                            <img src="https://images.unsplash.com/photo-1716049159350-54b36ce90d25?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDIxfEZ6bzN6dU9ITjZ3fHxlbnwwfHx8fHw%3D"
+                                                alt="">
+                                        </span>
+                                        <p>Lorem ipsum dolor</p>
+                                    </div>
+                                    <div class="text">
+                                        <span>
+                                            <img src="https://images.unsplash.com/photo-1716049159350-54b36ce90d25?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDIxfEZ6bzN6dU9ITjZ3fHxlbnwwfHx8fHw%3D"
+                                                alt="">
+                                        </span>
+                                        <p>Lorem ipsum dolor</p>
+                                    </div>
+                                    <div class="text">
+                                        <span>
+                                            <img src="https://images.unsplash.com/photo-1716049159350-54b36ce90d25?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDIxfEZ6bzN6dU9ITjZ3fHxlbnwwfHx8fHw%3D"
+                                                alt="">
+                                        </span>
+                                        <p>Lorem ipsum dolor</p>
+                                    </div>
+                                    <div class="text">
+                                        <span>
+                                            <img src="https://images.unsplash.com/photo-1716049159350-54b36ce90d25?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDIxfEZ6bzN6dU9ITjZ3fHxlbnwwfHx8fHw%3D"
+                                                alt="">
+                                        </span>
+                                        <p>Lorem ipsum dolor</p>
+                                    </div>
+                                    <div class="text">
+                                        <span>
+                                            <img src="https://images.unsplash.com/photo-1716049159350-54b36ce90d25?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDIxfEZ6bzN6dU9ITjZ3fHxlbnwwfHx8fHw%3D"
+                                                alt="">
+                                        </span>
+                                        <p>Lorem ipsum dolor</p>
+                                    </div>
+                                    <div class="text">
+                                        <span>
+                                            <img src="https://images.unsplash.com/photo-1716049159350-54b36ce90d25?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDIxfEZ6bzN6dU9ITjZ3fHxlbnwwfHx8fHw%3D"
+                                                alt="">
+                                        </span>
+                                        <p>Lorem ipsum dolor</p>
+                                    </div>
+                                </div>
+                                <div class="texts left">
+                                    <div class="text">
+                                        <p>Lorem ipsum dolor</p>
+                                        <span>
+                                            <img src="https://images.unsplash.com/photo-1716049159350-54b36ce90d25?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDIxfEZ6bzN6dU9ITjZ3fHxlbnwwfHx8fHw%3D"
+                                                alt="">
+                                        </span>
+                                    </div>
+                                    <div class="text">
+                                        <p>Lorem ipsum dolor</p>
+                                        <span>
+                                            <img src="https://images.unsplash.com/photo-1716049159350-54b36ce90d25?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDIxfEZ6bzN6dU9ITjZ3fHxlbnwwfHx8fHw%3D"
+                                                alt="">
+                                        </span>
+                                    </div>
+                                    <div class="text">
+                                        <p>Lorem ipsum dolor</p>
+                                        <span>
+                                            <img src="https://images.unsplash.com/photo-1716049159350-54b36ce90d25?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDIxfEZ6bzN6dU9ITjZ3fHxlbnwwfHx8fHw%3D"
+                                                alt="">
+                                        </span>
+                                    </div>
+                                    <div class="text">
+                                        <p>Lorem ipsum dolor</p>
+                                        <span>
+                                            <img src="https://images.unsplash.com/photo-1716049159350-54b36ce90d25?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDIxfEZ6bzN6dU9ITjZ3fHxlbnwwfHx8fHw%3D"
+                                                alt="">
+                                        </span>
+                                    </div>
+                                    <div class="text">
+                                        <p>Lorem ipsum dolor</p>
+                                        <span>
+                                            <img src="https://images.unsplash.com/photo-1716049159350-54b36ce90d25?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDIxfEZ6bzN6dU9ITjZ3fHxlbnwwfHx8fHw%3D"
+                                                alt="">
+                                        </span>
+                                    </div>
+                                    <div class="text">
+                                        <p>Lorem ipsum dolor</p>
+                                        <span>
+                                            <img src="https://images.unsplash.com/photo-1716049159350-54b36ce90d25?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDIxfEZ6bzN6dU9ITjZ3fHxlbnwwfHx8fHw%3D"
+                                                alt="">
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="texts right">
+                                    <div class="text">
+                                        <span>
+                                            <img src="https://images.unsplash.com/photo-1716049159350-54b36ce90d25?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDIxfEZ6bzN6dU9ITjZ3fHxlbnwwfHx8fHw%3D"
+                                                alt="">
+                                        </span>
+                                        <p>Lorem ipsum dolor</p>
+                                    </div>
+                                    <div class="text">
+                                        <span>
+                                            <img src="https://images.unsplash.com/photo-1716049159350-54b36ce90d25?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDIxfEZ6bzN6dU9ITjZ3fHxlbnwwfHx8fHw%3D"
+                                                alt="">
+                                        </span>
+                                        <p>Lorem ipsum dolor</p>
+                                    </div>
+                                    <div class="text">
+                                        <span>
+                                            <img src="https://images.unsplash.com/photo-1716049159350-54b36ce90d25?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDIxfEZ6bzN6dU9ITjZ3fHxlbnwwfHx8fHw%3D"
+                                                alt="">
+                                        </span>
+                                        <p>Lorem ipsum dolor</p>
+                                    </div>
+                                    <div class="text">
+                                        <span>
+                                            <img src="https://images.unsplash.com/photo-1716049159350-54b36ce90d25?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDIxfEZ6bzN6dU9ITjZ3fHxlbnwwfHx8fHw%3D"
+                                                alt="">
+                                        </span>
+                                        <p>Lorem ipsum dolor</p>
+                                    </div>
+                                    <div class="text">
+                                        <span>
+                                            <img src="https://images.unsplash.com/photo-1716049159350-54b36ce90d25?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDIxfEZ6bzN6dU9ITjZ3fHxlbnwwfHx8fHw%3D"
+                                                alt="">
+                                        </span>
+                                        <p>Lorem ipsum dolor</p>
+                                    </div>
+                                    <div class="text">
+                                        <span>
+                                            <img src="https://images.unsplash.com/photo-1716049159350-54b36ce90d25?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDIxfEZ6bzN6dU9ITjZ3fHxlbnwwfHx8fHw%3D"
+                                                alt="">
+                                        </span>
+                                        <p>Lorem ipsum dolor</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section id="craft">
+            <div class="craft">
+                <div class="craft-left">
+
+                    <h2>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Commodi magni vel inventore reiciendis
+                        neque iste.</h2>
+                </div>
+                <div class="craft-right">
+                    <div class="right-inner">
+                        <div class="right-box">
+                            <h3>Hi from box.</h3>
+                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.Lorem ipsum dolor sit, amet
+                                consectetur adipisicing elit.</p>
+                        </div>
+                        <div class="right-box">
+                            <h3>Hi from box.</h3>
+                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.Lorem ipsum dolor sit, amet
+                                consectetur adipisicing elit.</p>
+                        </div>
+                        <div class="right-box">
+                            <h3>Hi from box.</h3>
+                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.Lorem ipsum dolor sit, amet
+                                consectetur adipisicing elit.</p>
+                        </div>
+                        <div class="right-box">
+                            <h3>Hi from box.</h3>
+                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.Lorem ipsum dolor sit, amet
+                                consectetur adipisicing elit.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="talk">
+            <div class="horizontal">
+
+                <div class="talk-main">
+                    <div class="talk-text">
+                        <div class="container">
+                            <div class="panel">
+                                <h2>Real Talk</h2>
+                            </div>
+                            <div class="panel">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Hic vitae odit
+                                modi
+                                ratione sit sequi, magnam ex fugiat. Laborum ab quod est ex, distinctio architecto
+                                ducimus
+                                illum consectetur quo dolore?</div>
+                            <div class="panel">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Hic vitae odit
+                                modi
+                                ratione sit sequi, magnam ex fugiat. Laborum ab quod est ex, distinctio architecto
+                                ducimus
+                                illum consectetur quo dolore?</div>
+                            <div class="panel">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Hic vitae odit
+                                modi
+                                ratione sit sequi, magnam ex fugiat. Laborum ab quod est ex, distinctio architecto
+                                ducimus
+                                illum consectetur quo dolore?</div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="our-team">
+            <div class="team-inner">
+                <div class="our-team-title">
+                    <h2>Our Team</h2>
+                </div>
+                <div class="team-row">
+                    <div class="team-row-left">
+
+                        <div class="num">
+                            <p>01</p>
+                        </div>
+                        <div class="name">
+                            <p>Team Name 1</p>
+                        </div>
+                    </div>
+                    <div class="team-img">
+                        <img src="cloudflar/card_plus_slider/slider/1.png" alt="">
+                    </div>
+                    <div class="team-row-right">
+                        <div class="designation">
+                            <p>DESIGNATION</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-row">
+                    <div class="team-row-left">
+
+                        <div class="num">
+                            <p>01</p>
+                        </div>
+                        <div class="name">
+                            <p>Team Name 1</p>
+                        </div>
+                    </div>
+                    <div class="team-img">
+                        <img src="cloudflar/card_plus_slider/slider/1.png" alt="">
+                    </div>
+                    <div class="team-row-right">
+                        <div class="designation">
+                            <p>DESIGNATION</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-row">
+                    <div class="team-row-left">
+
+                        <div class="num">
+                            <p>01</p>
+                        </div>
+                        <div class="name">
+                            <p>Team Name 1</p>
+                        </div>
+                    </div>
+                    <div class="team-img">
+                        <img src="cloudflar/card_plus_slider/slider/1.png" alt="">
+                    </div>
+                    <div class="team-row-right">
+                        <div class="designation">
+                            <p>DESIGNATION</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-row">
+                    <div class="team-row-left">
+
+                        <div class="num">
+                            <p>01</p>
+                        </div>
+                        <div class="name">
+                            <p>Team Name 1</p>
+                        </div>
+                    </div>
+                    <div class="team-img">
+                        <img src="cloudflar/card_plus_slider/slider/1.png" alt="">
+                    </div>
+                    <div class="team-row-right">
+                        <div class="designation">
+                            <p>DESIGNATION</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-row">
+                    <div class="team-row-left">
+
+                        <div class="num">
+                            <p>01</p>
+                        </div>
+                        <div class="name">
+                            <p>Team Name 1</p>
+                        </div>
+                    </div>
+                    <div class="team-img">
+                        <img src="cloudflar/card_plus_slider/slider/1.png" alt="">
+                    </div>
+                    <div class="team-row-right">
+                        <div class="designation">
+                            <p>DESIGNATION</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-row">
+                    <div class="team-row-left">
+
+                        <div class="num">
+                            <p>01</p>
+                        </div>
+                        <div class="name">
+                            <p>Team Name 1</p>
+                        </div>
+                    </div>
+                    <div class="team-img">
+                        <img src="cloudflar/card_plus_slider/slider/1.png" alt="">
+                    </div>
+                    <div class="team-row-right">
+                        <div class="designation">
+                            <p>DESIGNATION</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-row">
+                    <div class="team-row-left">
+
+                        <div class="num">
+                            <p>01</p>
+                        </div>
+                        <div class="name">
+                            <p>Team Name 1</p>
+                        </div>
+                    </div>
+                    <div class="team-img">
+                        <img src="cloudflar/card_plus_slider/slider/1.png" alt="">
+                    </div>
+                    <div class="team-row-right">
+                        <div class="designation">
+                            <p>DESIGNATION</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-row">
+                    <div class="team-row-left">
+
+                        <div class="num">
+                            <p>01</p>
+                        </div>
+                        <div class="name">
+                            <p>Team Name 1</p>
+                        </div>
+                    </div>
+                    <div class="team-img">
+                        <img src="cloudflar/card_plus_slider/slider/1.png" alt="">
+                    </div>
+                    <div class="team-row-right">
+                        <div class="designation">
+                            <p>DESIGNATION</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        Temporibus maiores nesciunt ipsa saepe quod nam, ut esse possimus laudantium! Vero aliquid iusto aperiam et
+        doloremque velit asperiores dolor, aliquam cupiditate pariatur, blanditiis itaque assumenda laudantium optio
+        soluta. Debitis?
+        Temporibus, error molestiae provident fuga dolore numquam minus obcaecati atque dolores ad earum quae officiis,
+        ab commodi vero magnam quasi ipsam aliquam quis. Minima voluptates qui pariatur, eveniet vel quos!
+        Vel expedita architecto in deleniti? Aut inventore ducimus in saepe ut numquam vitae necessitatibus, repellendus
+        quasi, explicabo aliquam officiis eos omnis animi facere fugiat harum minima excepturi provident possimus
+        delectus.
+        Nisi, sint! Officiis doloremque eius ducimus fugit incidunt. Animi repellat placeat qui suscipit alias
+        praesentium voluptatum sit aperiam officia expedita iste quo, autem illum non vel sint, quibusdam quasi. Magnam?
+        Voluptates ratione atque laudantium debitis, odit doloremque blanditiis consequatur. Asperiores sint inventore
+        dicta unde repudiandae nulla, exercitationem, sed quis maxime distinctio deleniti officia magnam alias neque
+        illum, a voluptates? Cumque.
+        Exercitationem tenetur qui eveniet iusto quia a, reiciendis ipsam quo veniam voluptates ipsa ut aspernatur optio
+        dolorem non cupiditate nobis sint dolore? Neque, natus recusandae sed quidem provident perferendis vitae?
+        Ipsum tenetur facilis veritatis pariatur quisquam alias sint doloremque. Exercitationem eligendi aut nihil
+        obcaecati, reprehenderit aliquam voluptatibus dolorum quas excepturi optio temporibus minus in provident
+        possimus hic, nisi harum facere.
+        Dignissimos, nisi quisquam temporibus tenetur debitis quasi sed. Minus odio autem necessitatibus quo
+        consequuntur nesciunt eum, quidem, voluptatum at delectus sequi earum officiis illum laboriosam suscipit?
+        Temporibus ipsam nihil maiores!
+    </div>
+
+
+
+    </div>
+
+    <!-- lenis smooth -->
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <!-- <script src="https://unpkg.com/splitting/dist/splitting.min.js"></script> -->
+    <!-- gsap -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.16.1/TweenMax.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script>
+
+        // disable devtools start
+
+        // function RightClickDisable() {
+
+        //     document.addEventListener('contextmenu', event => {
+        //         event.preventDefault();
+        //     });
+        //     document.onkeydown = (e) => {
+        //         if (e.key === 'F12') {
+        //             e.preventDefault();
+        //         }
+        //         if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'i') {
+        //             e.preventDefault();
+        //         }
+        //         if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'c') {
+        //             e.preventDefault();
+        //         }
+        //         if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'j') {
+        //             e.preventDefault();
+        //         }
+        //         if (e.ctrlKey && e.key.toLowerCase() === 'u') {
+        //             e.preventDefault();
+        //         }
+        //     };
+        // }
+        // RightClickDisable();
+
+        // disable devtools end
+        function smoothScroll() {
+            // SMOOTH SCROLL & GSAP SCROLL TRIGGER START
+
+            const lenis = new Lenis();
+
+            lenis.on("scroll", (e) => { });
+
+            lenis.on("scroll", ScrollTrigger.update);
+
+            gsap.ticker.add((time) => {
+                lenis.raf(time * 1000);
+            });
+
+            gsap.ticker.lagSmoothing(0);
+            // SMOOTH SCROLL & GSAP SCROLL TRIGGER END
+        }
+        smoothScroll();
+
+
+        gsap.registerPlugin(ScrollTrigger);
+
+
+        // JavaScript to toggle scrolling on and off
+        function disableScrolling() {
+            document.body.style.overflow = 'hidden';
+        }
+
+        function enableScrolling() {
+            document.body.style.overflow = '';
+        }
+
+        // Call disableScrolling when you want to disable scrolling
+        disableScrolling();
+
+        // Use setTimeout to re-enable scrolling after 0.9 seconds
+        setTimeout(enableScrolling, 900);
+
+        gsap.to('.pre-loader', {
+            duration: 1.9,
+            "--clip": '0%',
+            delay: .9,
+        })
+
+
+        gsap.to('.left', {
+            x: "300px",
+            duration: 1,
+            ease: "expoScale(1,2, power2.in)",
+            scrollTrigger: {
+                start: "15% 30%",
+                end: "40% top",
+                markers: false,
+                scrub: true,
+
+            }
+        })
+        gsap.to('.right', {
+            x: "-300px",
+            duration: 1,
+            ease: "expoScale(1,2, power2.in)",
+            scrollTrigger: {
+                start: "15% 30%",
+                end: "40% top",
+                markers: false,
+                scrub: true,
+
+            }
+        })
+        gsap.to('.main-text', {
+            scale: 1,
+            duration: 1,
+            ease: "expoScale(1,2, power2.in)",
+            visibility: "visible",
+            scrollTrigger: {
+                // trigger: ".main-text",
+                start: "10% 43%",
+                end: "20% top",
+                markers: true,
+                scrub: true,
+
+            }
+        })
+        gsap.to('.hero-main-img', {
+            "--clip": '0%',
+            duration: 0.3,
+            // ease: "expoScale(1,2, power2.in)",
+            scrollTrigger: {
+                // trigger: ".main-text",
+                start: "10% 50%",
+                end: "20% 50%",
+                markers: true,
+                scrub: true,
+            }
+        })
+        document.querySelectorAll('.right-box').forEach(function (box) {
+            gsap.to(box, {
+                maxWidth: "500px",
+                backgroundColor: "#fff",
+                color: "#000",
+                duration: 1,
+                scrollTrigger: {
+                    trigger: box,
+                    start: "10% 50%",
+                    end: "100% 50%",
+                    markers: false,
+                    scrub: true,
+                }
+            });
+        });
+
+        let sections = gsap.utils.toArray(".panel");
+        gsap.to(sections, {
+            xPercent: -100 * (sections.length - 1),
+            ease: "none",
+            scrollTrigger: {
+                trigger: "#talk",
+                scrub: 1,
+                pin: true,
+                start: "10% 50%",
+                end: "20% 50%",
+                end: () => "+=" + document.querySelector("#talk").offsetWidth
+            }
+        });
+        // Splitting();
+    </script>
+</body>
+
+</html>
