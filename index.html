@@ -5,11 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="shortcut icon" href="./FAV-ICONS/000000.png" type="image/x-icon">
     <link rel="stylesheet" href="https://unpkg.com/splitting/dist/splitting.css" />
     <link rel="stylesheet" href="https://unpkg.com/splitting/dist/splitting-cells.css" />
 
 
 </head>
+
 <style>
     body {
         background-color: black;
@@ -18,7 +20,6 @@
         padding: 0;
         overflow: hidden;
     }
-
 
     h1,
     h2,
@@ -37,7 +38,8 @@
 
 
     .hero {
-        height: 480vh;
+        height: 300vh;
+        background: #000 !important;
     }
 
     .hero .hero-inner {
@@ -53,6 +55,8 @@
     #main .hero .hero-img {
         height: 100vh;
     }
+
+
 
     .hero-main-img {
 
@@ -77,8 +81,6 @@
         margin: 50px auto 0px;
         text-align: center;
         font-size: 1.6rem;
-
-        /* opacity: 0; */
     }
 
     #main .hero .hero-inner .hero-sticky .main-text .top-main-text .text-splitting {
@@ -129,8 +131,7 @@
         z-index: 9999;
     }
 
-    #main section {
-        background-color: #101010;
+    #main section:not(:nth-child(1)) {
         display: flex;
         justify-content: center;
         width: 100%;
@@ -175,11 +176,12 @@
     }
 
     #main section .craft .craft-right .right-inner .right-box {
-        border: 1px solid #fff;
+        border: 1px solid #000;
         padding: 20px;
         text-align: center;
         max-width: 420px;
         width: 100%;
+        color: #000;
     }
 
     #main section .craft .craft-right .right-inner .right-box h3 {
@@ -191,14 +193,14 @@
     }
 
 
+    #main #talk .horizontal {
+        height: 400vh;
+    }
 
     #main #talk .horizontal .talk-main {
-        position: sticky;
         top: 0;
-        height: 100%;
+        position: sticky;
         height: 100vh;
-        height: 100dvh;
-        background-color: #202020;
     }
 
     #main #talk .horizontal .talk-main .talk-text .container {
@@ -216,6 +218,7 @@
         justify-content: center;
         align-items: center;
         font-size: 5rem;
+        color: #000;
     }
 
     #main #our-team {
@@ -237,14 +240,16 @@
         display: flex;
         justify-content: space-between;
         height: 100px;
-        background-color: #000;
         align-items: center;
         padding: 0px 30px;
-        border-bottom: 2px solid #fff;
+        border-top: 1px solid #000;
         font-size: 44px;
         position: relative;
-        /* z-index: 999; */
-        /* overflow: hidden; */
+        color: #000;
+    }
+
+    #main #our-team .team-inner .team-row.one {
+        border-top: 0px solid transparent;
     }
 
     #main #our-team .team-inner .team-row p {
@@ -256,7 +261,7 @@
         content: "";
         height: 100%;
         width: 100%;
-        background-color: #4f4f4f;
+        background-color: #2544EE;
         display: block;
         position: absolute;
         left: 0;
@@ -271,7 +276,6 @@
         content: "";
         height: 100%;
         width: 100%;
-
         display: block;
         position: absolute;
         left: 0;
@@ -280,13 +284,18 @@
         transform-origin: top center;
     }
 
+    #main #our-team .team-inner .team-row:hover p {
+        color: #fff;
+    }
+
     #main #our-team .team-inner .team-row .team-row-left {
         display: flex;
         gap: 20px;
     }
 
     #main #our-team .team-inner .team-row .team-row-left .num {
-        /* opacity: .15; */
+        opacity: .15;
+        z-index: 9;
     }
 
     #main #our-team .team-inner .team-row .team-img {
@@ -311,7 +320,6 @@
 
     #main #our-team .team-inner .team-row:hover .team-img {
         visibility: visible;
-
         opacity: 1;
     }
 
@@ -349,7 +357,6 @@
     #circle {
         position: relative;
         width: 100%;
-        /* padding-bottom: 100%; */
         overflow: hidden;
     }
 
@@ -360,12 +367,9 @@
     }
 
     #circle svg {
-        /* position: absolute; */
         left: 0;
         top: 0;
         width: 100%;
-        /* height: 540px; */
-
         -webkit-animation-name: rotate;
         -moz-animation-name: rotate;
         -ms-animation-name: rotate;
@@ -438,6 +442,22 @@
             transform: rotate(0);
         }
     }
+
+    @media only screen and (max-width:860px) and (min-width:220px) {
+        #main section .craft .craft-right {
+            padding: 100px 0px;
+        }
+
+        #main section .craft .craft-right .right-inner {
+            flex-direction: row;
+            width: 100vw;
+        }
+
+        #main section .craft {
+            flex-wrap: wrap;
+        }
+
+    }
 </style>
 
 
@@ -466,8 +486,9 @@
 
         </div>
     </div>
+
     <div id="main">
-        <div class="hero">
+        <section class="hero">
             <div class="hero-inner">
                 <div class="hero-sticky">
                     <div class="hero-main-img">
@@ -724,11 +745,10 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
         <section id="craft">
             <div class="craft">
                 <div class="craft-left">
-
                     <h2>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Commodi magni vel inventore reiciendis
                         neque iste.</h2>
                 </div>
@@ -794,7 +814,7 @@
                 <div class="our-team-title">
                     <h2>Our Team</h2>
                 </div>
-                <div class="team-row">
+                <div class="team-row one">
                     <div class="team-row-left">
 
                         <div class="num">
@@ -805,7 +825,7 @@
                         </div>
                     </div>
                     <div class="team-img">
-                        <img src="cloudflar/card_plus_slider/slider/1.png" alt="">
+                        <img src="./1.png" alt="">
                     </div>
                     <div class="team-row-right">
                         <div class="designation">
@@ -824,7 +844,7 @@
                         </div>
                     </div>
                     <div class="team-img">
-                        <img src="cloudflar/card_plus_slider/slider/1.png" alt="">
+                        <img src="./1.png" alt="">
                     </div>
                     <div class="team-row-right">
                         <div class="designation">
@@ -843,7 +863,7 @@
                         </div>
                     </div>
                     <div class="team-img">
-                        <img src="cloudflar/card_plus_slider/slider/1.png" alt="">
+                        <img src="./1.png" alt="">
                     </div>
                     <div class="team-row-right">
                         <div class="designation">
@@ -862,7 +882,7 @@
                         </div>
                     </div>
                     <div class="team-img">
-                        <img src="cloudflar/card_plus_slider/slider/1.png" alt="">
+                        <img src="./1.png" alt="">
                     </div>
                     <div class="team-row-right">
                         <div class="designation">
@@ -881,7 +901,7 @@
                         </div>
                     </div>
                     <div class="team-img">
-                        <img src="cloudflar/card_plus_slider/slider/1.png" alt="">
+                        <img src="./1.png" alt="">
                     </div>
                     <div class="team-row-right">
                         <div class="designation">
@@ -900,7 +920,7 @@
                         </div>
                     </div>
                     <div class="team-img">
-                        <img src="cloudflar/card_plus_slider/slider/1.png" alt="">
+                        <img src="./1.png" alt="">
                     </div>
                     <div class="team-row-right">
                         <div class="designation">
@@ -919,7 +939,7 @@
                         </div>
                     </div>
                     <div class="team-img">
-                        <img src="cloudflar/card_plus_slider/slider/1.png" alt="">
+                        <img src="./1.png" alt="">
                     </div>
                     <div class="team-row-right">
                         <div class="designation">
@@ -938,7 +958,7 @@
                         </div>
                     </div>
                     <div class="team-img">
-                        <img src="cloudflar/card_plus_slider/slider/1.png" alt="">
+                        <img src="./1.png" alt="">
                     </div>
                     <div class="team-row-right">
                         <div class="designation">
@@ -949,31 +969,13 @@
 
             </div>
         </section>
-        Temporibus maiores nesciunt ipsa saepe quod nam, ut esse possimus laudantium! Vero aliquid iusto aperiam et
-        doloremque velit asperiores dolor, aliquam cupiditate pariatur, blanditiis itaque assumenda laudantium optio
-        soluta. Debitis?
-        Temporibus, error molestiae provident fuga dolore numquam minus obcaecati atque dolores ad earum quae officiis,
-        ab commodi vero magnam quasi ipsam aliquam quis. Minima voluptates qui pariatur, eveniet vel quos!
-        Vel expedita architecto in deleniti? Aut inventore ducimus in saepe ut numquam vitae necessitatibus, repellendus
-        quasi, explicabo aliquam officiis eos omnis animi facere fugiat harum minima excepturi provident possimus
-        delectus.
-        Nisi, sint! Officiis doloremque eius ducimus fugit incidunt. Animi repellat placeat qui suscipit alias
-        praesentium voluptatum sit aperiam officia expedita iste quo, autem illum non vel sint, quibusdam quasi. Magnam?
-        Voluptates ratione atque laudantium debitis, odit doloremque blanditiis consequatur. Asperiores sint inventore
-        dicta unde repudiandae nulla, exercitationem, sed quis maxime distinctio deleniti officia magnam alias neque
-        illum, a voluptates? Cumque.
-        Exercitationem tenetur qui eveniet iusto quia a, reiciendis ipsam quo veniam voluptates ipsa ut aspernatur optio
-        dolorem non cupiditate nobis sint dolore? Neque, natus recusandae sed quidem provident perferendis vitae?
-        Ipsum tenetur facilis veritatis pariatur quisquam alias sint doloremque. Exercitationem eligendi aut nihil
-        obcaecati, reprehenderit aliquam voluptatibus dolorum quas excepturi optio temporibus minus in provident
-        possimus hic, nisi harum facere.
-        Dignissimos, nisi quisquam temporibus tenetur debitis quasi sed. Minus odio autem necessitatibus quo
-        consequuntur nesciunt eum, quidem, voluptatum at delectus sequi earum officiis illum laboriosam suscipit?
-        Temporibus ipsam nihil maiores!
     </div>
-
-
-
+    </div>
+    <div class="buttoxcgsfdgsdfn">
+        <a href="#" class="button-a-link">
+            Click me! <span><img src="./right-arrow.svg" alt="arrow"
+                    style="height: 15px; background-color: #fff;"></span>
+        </a>
     </div>
 
     <!-- lenis smooth -->
@@ -986,36 +988,35 @@
     <script>
 
         // disable devtools start
+        function RightClickDisable() {
 
-        // function RightClickDisable() {
-
-        //     document.addEventListener('contextmenu', event => {
-        //         event.preventDefault();
-        //     });
-        //     document.onkeydown = (e) => {
-        //         if (e.key === 'F12') {
-        //             e.preventDefault();
-        //         }
-        //         if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'i') {
-        //             e.preventDefault();
-        //         }
-        //         if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'c') {
-        //             e.preventDefault();
-        //         }
-        //         if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'j') {
-        //             e.preventDefault();
-        //         }
-        //         if (e.ctrlKey && e.key.toLowerCase() === 'u') {
-        //             e.preventDefault();
-        //         }
-        //     };
-        // }
-        // RightClickDisable();
+            //     document.addEventListener('contextmenu', event => {
+            //         event.preventDefault();
+            //     });
+            //     document.onkeydown = (e) => {
+            //         if (e.key === 'F12') {
+            //             e.preventDefault();
+            //         }
+            //         if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'i') {
+            //             e.preventDefault();
+            //         }
+            //         if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'c') {
+            //             e.preventDefault();
+            //         }
+            //         if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'j') {
+            //             e.preventDefault();
+            //         }
+            //         if (e.ctrlKey && e.key.toLowerCase() === 'u') {
+            //             e.preventDefault();
+            //         }
+            //     };
+        }
+        RightClickDisable();
 
         // disable devtools end
-        function smoothScroll() {
-            // SMOOTH SCROLL & GSAP SCROLL TRIGGER START
 
+
+        function smoothScroll() {
             const lenis = new Lenis();
 
             lenis.on("scroll", (e) => { });
@@ -1027,15 +1028,12 @@
             });
 
             gsap.ticker.lagSmoothing(0);
-            // SMOOTH SCROLL & GSAP SCROLL TRIGGER END
         }
         smoothScroll();
 
 
         gsap.registerPlugin(ScrollTrigger);
 
-
-        // JavaScript to toggle scrolling on and off
         function disableScrolling() {
             document.body.style.overflow = 'hidden';
         }
@@ -1044,98 +1042,129 @@
             document.body.style.overflow = '';
         }
 
-        // Call disableScrolling when you want to disable scrolling
         disableScrolling();
 
-        // Use setTimeout to re-enable scrolling after 0.9 seconds
         setTimeout(enableScrolling, 900);
 
-        gsap.to('.pre-loader', {
-            duration: 1.9,
-            "--clip": '0%',
-            delay: .9,
-        })
+
+        function animationTimeline() {
 
 
-        gsap.to('.left', {
-            x: "300px",
-            duration: 1,
-            ease: "expoScale(1,2, power2.in)",
-            scrollTrigger: {
-                start: "15% 30%",
-                end: "40% top",
-                markers: false,
-                scrub: true,
+            gsap.to('.pre-loader', {
+                duration: 1.9,
+                "--clip": '0%',
+                delay: .9,
+            })
 
-            }
-        })
-        gsap.to('.right', {
-            x: "-300px",
-            duration: 1,
-            ease: "expoScale(1,2, power2.in)",
-            scrollTrigger: {
-                start: "15% 30%",
-                end: "40% top",
-                markers: false,
-                scrub: true,
 
-            }
-        })
-        gsap.to('.main-text', {
-            scale: 1,
-            duration: 1,
-            ease: "expoScale(1,2, power2.in)",
-            visibility: "visible",
-            scrollTrigger: {
-                // trigger: ".main-text",
-                start: "10% 43%",
-                end: "20% top",
-                // markers: true,
-                scrub: true,
-
-            }
-        })
-        gsap.to('.hero-main-img', {
-            "--clip": '0%',
-            duration: 0.3,
-            // ease: "expoScale(1,2, power2.in)",
-            scrollTrigger: {
-                // trigger: ".main-text",
-                start: "10% 50%",
-                end: "20% 50%",
-                // markers: true,
-                scrub: true,
-            }
-        })
-        document.querySelectorAll('.right-box').forEach(function (box) {
-            gsap.to(box, {
-                maxWidth: "500px",
-                backgroundColor: "#fff",
-                color: "#000",
+            gsap.to('.left', {
+                x: "300px",
                 duration: 1,
+                ease: "expoScale(1,2, power2.in)",
                 scrollTrigger: {
-                    trigger: box,
-                    start: "10% 50%",
-                    end: "100% 50%",
+                    start: "15% 30%",
+                    end: "40% top",
                     markers: false,
                     scrub: true,
+
+                }
+            })
+
+            gsap.to('.right', {
+                x: "-300px",
+                duration: 1,
+                ease: "expoScale(1,2, power2.in)",
+                scrollTrigger: {
+                    start: "15% 30%",
+                    end: "40% top",
+                    markers: false,
+                    scrub: true,
+
+                }
+            })
+
+            gsap.to('.main-text', {
+                scale: 1,
+                duration: 1,
+                ease: "expoScale(1,2, power2.in)",
+                visibility: "visible",
+                scrollTrigger: {
+                    start: "10% 43%",
+                    end: "20% top",
+                    // markers: true,
+                    scrub: true,
+
+                }
+            })
+            gsap.to('.hero-main-img', {
+                "--clip": '0%',
+                duration: 0.3,
+                scrollTrigger: {
+                    start: "10% 50%",
+                    end: "20% 50%",
+                    // markers: true,
+                    scrub: true,
+                }
+            })
+            document.querySelectorAll('.right-box').forEach(function (box) {
+                gsap.to(box, {
+                    maxWidth: "500px",
+                    backgroundColor: "#000",
+                    color: "#AEDEE0",
+                    duration: 1,
+                    scrollTrigger: {
+                        trigger: box,
+                        start: "10% 50%",
+                        end: "100% 50%",
+                        markers: false,
+                        scrub: true,
+                    }
+                });
+            });
+
+            let sections = gsap.utils.toArray(".panel");
+            gsap.to(sections, {
+                xPercent: -100 * (sections.length - 1),
+                ease: "none",
+                scrollTrigger: {
+                    trigger: "#talk",
+                    scrub: 1,
+                    //pin: "#talk",
+                    start: "10% 50%",
+                    end: "20% 50%",
+                    end: () => "+=" + document.querySelector("#talk").offsetWidth
                 }
             });
-        });
 
-        let sections = gsap.utils.toArray(".panel");
-        gsap.to(sections, {
-            xPercent: -100 * (sections.length - 1),
-            ease: "none",
-            scrollTrigger: {
-                trigger: "#talk",
-                scrub: 1,
-                pin: true,
-                start: "10% 50%",
-                end: "20% 50%",
-                end: () => "+=" + document.querySelector("#talk").offsetWidth
+            let sectionsOne = gsap.utils.toArray("section"),
+                colors = ["#000000", "#AEDEE0", "#EF9D71", "#FFFFFF"],
+                favicons = ["./FAV-ICONS/000000.png", "./FAV-ICONS/AEDEE0.png", "./FAV-ICONS/EF9D71.png", "./FAV-ICONS/FFFFFF.png"];
+
+            sectionsOne.forEach((sectionOne, i) => {
+                ScrollTrigger.create({
+                    trigger: sectionOne,
+                    start: "top 50",
+                    end: "+=100%",
+                    onToggle: self => {
+                        if (self.isActive) {
+                            gsap.to("section", { backgroundColor: colors[i], overwrite: true });
+                            updateFavicon(i);
+                        }
+                    }
+                });
+            });
+
+            function updateFavicon(index) {
+                // Find the link element for the favicon
+                let link = document.querySelector("link[rel*='icon']");
+                // Set the new href for the favicon
+                link.href = favicons[index];
             }
-        });
+
+
+        }
+        animationTimeline();
+
         // Splitting();
     </script>
 </body>
