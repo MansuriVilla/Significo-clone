@@ -990,26 +990,26 @@
         // disable devtools start
         function RightClickDisable() {
 
-            //     document.addEventListener('contextmenu', event => {
-            //         event.preventDefault();
-            //     });
-            //     document.onkeydown = (e) => {
-            //         if (e.key === 'F12') {
-            //             e.preventDefault();
-            //         }
-            //         if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'i') {
-            //             e.preventDefault();
-            //         }
-            //         if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'c') {
-            //             e.preventDefault();
-            //         }
-            //         if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'j') {
-            //             e.preventDefault();
-            //         }
-            //         if (e.ctrlKey && e.key.toLowerCase() === 'u') {
-            //             e.preventDefault();
-            //         }
-            //     };
+                document.addEventListener('contextmenu', event => {
+                    event.preventDefault();
+                });
+                document.onkeydown = (e) => {
+                    if (e.key === 'F12') {
+                        e.preventDefault();
+                    }
+                    if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'i') {
+                        e.preventDefault();
+                    }
+                    if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'c') {
+                        e.preventDefault();
+                    }
+                    if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'j') {
+                        e.preventDefault();
+                    }
+                    if (e.ctrlKey && e.key.toLowerCase() === 'u') {
+                        e.preventDefault();
+                    }
+                };
         }
         RightClickDisable();
 
